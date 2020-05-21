@@ -2,6 +2,8 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
+
+
 <!-- style for the loader -->
 <style>
   .arjs-loader {
@@ -30,28 +32,18 @@
     <div>Loading, please wait...</div>
   </div>
 
-  <!-- a-frame scene -->
-  <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
-    <!-- a-nft is the anchor that defines an Image Tracking entity -->
-    <!-- on 'url' use the path to the Image Descriptors created before. -->
-    <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
-    <a-nft
-      type="nft"
-      url="plaatje"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-       <a-entity gltf-model="url(corona.glb)"></a-entity>
-    </a-nft>
-    <!-- static camera that moves according to the device movemenents -->
-    <a-entity camera></a-entity>
-  </a-scene>
+<script src='js/aframe-8.min.js'></script>
+<!--<script src='js/aframe-extras.loaders.min.js'></script>-->
+<script src='js/aframe-ar.min.js'></script>
+
+<a-scene embedded arjs='sourceType: webcam;'>
+
+<a-marker preset='hiro'>
+
+ <a-entity gltf-model="url(https://github.com/ta100rik/AR-project/blob/master/corona.glb?raw=true)"  scale="0.2 0.2 0.2"></a-entity>
+
+</a-marker>
+
+<a-entity camera></a-entity>
+
 </body>
