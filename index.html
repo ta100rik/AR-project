@@ -1,10 +1,6 @@
-<!-- import aframe and then ar.js with image tracking / location based features -->
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-
-
-<!-- style for the loader -->
 <style>
   .arjs-loader {
     height: 100%;
@@ -27,23 +23,32 @@
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
-  <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+  <!-- minimal loader shown until image descriptors are loaded -->
   <div class="arjs-loader">
     <div>Loading, please wait...</div>
   </div>
-
-<script src='js/aframe-8.min.js'></script>
-<!--<script src='js/aframe-extras.loaders.min.js'></script>-->
-<script src='js/aframe-ar.min.js'></script>
-
-<a-scene embedded arjs='sourceType: webcam;'>
-
-<a-marker preset='hiro'>
-
- <a-entity gltf-model="url(https://github.com/ta100rik/AR-project/blob/master/corona.glb?raw=true)"  scale="0.2 0.2 0.2"></a-entity>
-
-</a-marker>
-
-<a-entity camera></a-entity>
-
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- we use cors proxy to avoid cross-origin problems -->
+    <a-nft
+      type="nft"
+      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <a-entity
+        gltf-model="corona.gltf"
+        scale="5 5 5"
+        position="50 150 0"
+      >
+      </a-entity>
+    </a-nft>
+    <a-entity camera></a-entity>
+  </a-scene>
 </body>
